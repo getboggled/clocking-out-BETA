@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>clocking out</title>
+    <style>
+        body {
+            background-color: black;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            position: relative;
+        }
+
+        img {
+            display: block;
+            width: 600px;
+            height: auto;
+        }
+
+        #dialogueBox {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            bottom: 80px;
+            width: 50%;
+            height: 100px;
+            background-color: black;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            border: 2px solid white;
+            font-family: "Courier New", Courier, monospace; 
+            z-index: 999; 
+            cursor: pointer; 
+        }
+    </style>
+</head>
+<body>
+    <img src="4talka.gif" alt="Character Image">
+
+    <div id="dialogueBox" onclick="nextDialogue()">
+        <p id="dialogueText">...</p>
+    </div>
+
+    <script>
+        var dialogueElement = document.getElementById('dialogueText');
+
+        var dialogueLines = [
+            "EMPTY",
+            "sometimes i wonder what the point is.",
+	    "of just working in a void.",
+"how can i make things when i don't consume anything?",
+"i just can't stand it, though.",
+"seeing other people make things too.",
+"seeing younger people make things better.",
+"i get so weird about it that i stop making anything at all.",
+"how am i supposed to be better if i'm always just staring at a blank page all the time?",
+"i just feel like i'm constantly running out of time.",
+"i can feel it slipping, as if my very own fingers are the gaps in an hourglass.",
+"...",
+"self pity is so indulgent.",
+"it's sticking to me like tar.",
+"i keep telling myself that if i just keep waiting through every 5am alone,",
+"it feels like the morning will never come.",
+"...",
+"i'm so tired.",
+"i can't stand seeing.",
+"i can't stand being seen.",
+"i just want to close my eyes.",
+"...",
+".....",
+"......."
+        ];
+
+        var currentLine = 0;
+
+        function nextDialogue() {
+            if (currentLine < dialogueLines.length - 1) {
+                currentLine++;
+                dialogueElement.innerHTML = dialogueLines[currentLine];
+            } else {
+                // On the last line of dialogue, navigate to menu.html
+                window.location.href = "menu.html";
+            }
+        }
+    </script>
+</body>
+</html>

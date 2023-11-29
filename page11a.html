@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>clocking out</title>
+    <style>
+        body {
+            background-color: black;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            position: relative; 
+        }
+
+        img {
+            display: block;
+            width: 800px;
+            height: auto; 
+        }
+
+        #dialogueBox {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            bottom: 80px; 
+            width: 50%;
+            height: 100px; 
+            background-color: black;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            border: 2px solid white;
+            font-family: "Courier New", Courier, monospace;
+            z-index: 999; 
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <img src="11talka.gif" alt="Character Image">
+
+    <div id="dialogueBox" onclick="nextDialogue()">
+        <p id="dialogueText">...</p>
+    </div>
+
+    <script>
+        var dialogueElement = document.getElementById('dialogueText');
+
+        var dialogueLines = [
+            "EMPTY",
+"......",
+"........",
+"what?",
+"..........",
+"what point is there in waiting?",
+"............",
+"i'm no magician, you know.",
+"..............",
+"nothing new will come of this.",
+"................",
+"is this the first time we've met?",
+"..................",
+"my lines... they won't change, you know.",
+"....................",
+"in your life, there will be many that stay standing still,",
+"watching from a place you can't see,",
+ "as you stride onwards through the years.",
+"......................",
+"it's not just me, you know.",
+"........................",
+"you should thank them.",
+"..........................",
+"even though, at the end of it all...",
+"................................",
+"..................................",
+"....................................",
+"you, too, shall remain in the dark.",
+"go.",
+"stop taking your time.",
+"...",
+"<b>before i do.</b>",
+        ];
+
+        var currentLine = 0;
+
+        function nextDialogue() {
+            if (currentLine < dialogueLines.length - 1) {
+                currentLine++;
+                dialogueElement.innerHTML = dialogueLines[currentLine];
+            } else {
+                // On the last line of dialogue, navigate to menu.html
+                window.location.href = "menu.html";
+            }
+        }
+    </script>
+</body>
+</html>

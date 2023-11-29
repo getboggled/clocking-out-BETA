@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>clocking out</title>
+    <style>
+        body {
+            background-color: black;
+            position: relative;
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        img {
+            display: block;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        img.character {
+            width: 250px; 
+            height: auto;
+            z-index: 1; 
+          
+            top: 55%; 
+            left: 52%; 
+        }
+
+        img.background {
+            width: 1000px; 
+            height: auto; 
+            z-index: 0; 
+        }
+    </style>
+</head>
+<body>
+    <a href="page4a.html">
+        <img src="4sprite.gif" class="character">
+    </a>
+    <img src="4bgs.png" class="background">
+</body>
+</html>

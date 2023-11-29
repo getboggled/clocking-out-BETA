@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>clocking out</title>
+    <style>
+        body {
+            background-color: black;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            position: relative;
+        }
+
+        img {
+            display: block;
+            width: 600px;
+            height: auto;
+        }
+
+        #dialogueBox {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            bottom: 80px;
+            width: 50%;
+            height: 100px;
+            background-color: black;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            border: 2px solid white;
+            font-family: "Courier New", Courier, monospace;
+            z-index: 999;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <img src="10talk.gif" alt="Character Image">
+
+    <div id="dialogueBox" onclick="nextDialogue()">
+        <p id="dialogueText">...</p>
+    </div>
+
+    <script>
+        var dialogueElement = document.getElementById('dialogueText');
+
+        var dialogueLines = [
+            "EMPTY",
+"once in a while,",
+"you'll meet someone who will tell you they can't wait for you any longer.",
+"they'll leave,",
+"and you'll be left.",
+"left awake for 72 hours at a time,",
+"left one person in a two person bed.",
+"left entirely still.",
+"so still you don't breathe for months on end.",
+"you'll write endless letters",
+"that you'll never send.",
+"you'll dream of balancing on pipes and scaffolding,",
+"as your walls and your floors and your windows are torn down.",
+"you'll have clocked out of life.",
+"...",
+"eventually you'll get tired",
+"of being so tired all the time.",
+"you'll go outside.",
+"you'll realise",
+"after everything",
+"...",
+"you were the one waiting, too."
+        ];
+
+        var currentLine = 0;
+
+        function nextDialogue() {
+            if (currentLine < dialogueLines.length - 1) {
+                currentLine++;
+                dialogueElement.innerHTML = dialogueLines[currentLine];
+            } else {
+                // On the last line of dialogue, navigate to menu.html
+                window.location.href = "menu.html";
+            }
+        }
+    </script>
+</body>
+</html>

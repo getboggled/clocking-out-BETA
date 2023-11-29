@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>clocking out</title>
+    <style>
+        body {
+            background-color: black;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            position: relative;
+        }
+
+        img {
+            display: block;
+            width: 600px;
+            height: auto;
+        }
+
+        #dialogueBox {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            bottom: 80px;
+            width: 50%;
+            height: 100px;
+            background-color: black;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            border: 2px solid white;
+            font-family: "Courier New", Courier, monospace;
+            z-index: 999;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <img src="6talka.gif" alt="Character Image">
+
+    <div id="dialogueBox" onclick="nextDialogue()">
+        <p id="dialogueText">...</p>
+    </div>
+
+    <script>
+        var dialogueElement = document.getElementById('dialogueText');
+
+        var dialogueLines = [
+            "EMPTY",
+"who do i look like to you?",
+"i've been so many people.",
+"i've been sarcastic, i've been sweet.",
+"i've been pretty, i've been handsome.",
+"i've been nervous, i've been cold.",
+"i've been hesitant, i've been reckless.",
+"i've been ugly, i've been expressive.",
+"i've been hidden, i've been seen.",
+"i've been silent, i've been heard.",
+"i've been absolutely terrible, i've been just fine.",
+"i've been you, i've been me.",
+"i've been every single person i've ever met.",
+"every single person i've ever met has been surprised",
+"when they meet me again.",
+"change, change, change.",
+"every single person i meet has me surprised",
+"that they don't meet silent ugly nervous me.",
+"change, change, change.",
+"who do i look like to you?",
+"who do i look like to me?"
+        ];
+
+        var currentLine = 0;
+
+        function nextDialogue() {
+            if (currentLine < dialogueLines.length - 1) {
+                currentLine++;
+                dialogueElement.innerHTML = dialogueLines[currentLine];
+            } else {
+                // On the last line of dialogue, navigate to menu.html
+                window.location.href = "menu.html";
+            }
+        }
+    </script>
+</body>
+</html>

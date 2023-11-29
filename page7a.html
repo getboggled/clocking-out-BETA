@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>clocking out</title>
+    <style>
+        body {
+            background-color: black;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            position: relative;
+        }
+
+        img {
+            display: block;
+            width: 650px;
+            height: auto;
+        }
+
+        #dialogueBox {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            bottom: 80px; 
+            width: 50%;
+            height: 100px; 
+            background-color: black;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            border: 2px solid white;
+            font-family: "Courier New", Courier, monospace;
+            z-index: 999;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <img src="7talk.gif" alt="Character Image">
+
+    <div id="dialogueBox" onclick="nextDialogue()">
+        <p id="dialogueText">...</p>
+    </div>
+
+    <script>
+        var dialogueElement = document.getElementById('dialogueText');
+
+        var dialogueLines = [
+            "EMPTY",
+"perhaps you are wondering who we are.",
+"or why we exist.",
+"...",
+"sometimes, i'm not so sure myself.",
+"you can't see it, but just behind you, there's a script.",
+"it's telling me to <i>roll the credits.</i>",
+"it's telling me we were created by someone called <b>*******</b>.",
+"it's telling me to thank <b>***</b> and also all the people at <b>***</b>.",
+"it's telling me <i>not</i> to tell you that",
+"we are formed out of a kind of desperation.",
+"one that",
+"only exists when someone is trying to prove that they're worth something.",
+"it's hard to be worth something",
+"in such a short time on this earth.",
+"but it's still good to try",
+"...",
+"i guess.",
+"..."
+        ];
+
+        var currentLine = 0;
+
+        function nextDialogue() {
+            if (currentLine < dialogueLines.length - 1) {
+                currentLine++;
+                dialogueElement.innerHTML = dialogueLines[currentLine];
+            } else {
+                // On the last line of dialogue, navigate to menu.html
+                window.location.href = "menu.html";
+            }
+        }
+    </script>
+</body>
+</html>

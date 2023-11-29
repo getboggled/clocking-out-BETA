@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>clocking out</title>
+    <style>
+        body {
+            background-color: black;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            position: relative;
+        }
+
+        img {
+            display: block;
+            width: 600px;
+            height: auto;
+        }
+
+        #dialogueBox {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            bottom: 80px;
+            width: 50%;
+            height: 100px;
+            background-color: black;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            border: 2px solid white;
+            font-family: "Courier New", Courier, monospace;
+            z-index: 999;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <img src="12talk.gif" alt="Character Image">
+
+    <div id="dialogueBox" onclick="nextDialogue()">
+        <p id="dialogueText">...</p>
+    </div>
+
+    <script>
+        var dialogueElement = document.getElementById('dialogueText');
+
+        var dialogueLines = [
+            "EMPTY",
+"hey.",
+"have you noticed?",
+"everytime you click, time moves a little?",
+"if you wanted, we could just stay here and stare at each other",
+"forever.",
+"...",
+"hey.",
+"...",
+"<b>hey.</b>",
+"i'm really scared.",
+"i wish you would stop moving us so quickly.",
+"...",
+"people always say not to look down,",
+"but sometimes the horizontal vertigo is scarier.",
+"...the horizontigo?",
+"staying still is the worst.",
+"watching everyone rush forward while your 10th birthday rushes backwards",
+"further and further.",
+"...",
+"how old are you?",
+"don't answer, it doesn't matter.",
+"we all still feel like children",
+"dressing up in our parent's huge coats",
+"that were actually very normal-sized.",
+"...",
+"when i make birthday cards for my mother,",
+"i still draw her taller than me.",
+"when my mother gives me birthday presents,",
+"it's still children's soft toys.",
+"it's still my favourite thing.",
+"...",
+"i'd ask you not to leave me, but",
+"i know you have to go.",
+"it's okay.",
+"i'll be okay.",
+"we'll both be okay.",
+        ];
+
+        var currentLine = 0;
+
+        function nextDialogue() {
+            if (currentLine < dialogueLines.length - 1) {
+                currentLine++;
+                dialogueElement.innerHTML = dialogueLines[currentLine];
+            } else {
+                // On the last line of dialogue, navigate to menu.html
+                window.location.href = "menu.html";
+            }
+        }
+    </script>
+</body>
+</html>

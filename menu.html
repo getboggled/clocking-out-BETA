@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>clocking out</title>
+    <style>
+        body {
+            background-color: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        #centerImage {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translateX(-50%) translateY(-50%);
+        }
+
+        .circle {
+            position: relative;
+            width: 000px; 
+            height: 000px;
+        }
+
+        .circle img {
+            position: absolute;
+            width: 90px; 
+            height: 90px; 
+            object-fit: cover;
+            transform: translateX(-50%) translateY(-50%);
+        }
+
+        #arrowImage {
+            transform-origin: center bottom;
+        }
+    </style>
+</head>
+<body>
+    <div id="centerImage">
+        <img id="arrowImage" src="arrow.png" style="width:100px; height: 150px; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%) translateY(0);">
+    </div>
+
+    <div class="circle" id="imageCircle"></div>
+
+    <script>
+        // JavaScript code to create a circle of images
+        const circle = document.getElementById('imageCircle');
+        const arrowImage = document.getElementById('arrowImage');
+
+        const numImages = 12;
+        const angleIncrement = (2 * Math.PI) / numImages;
+        const radius = 250; // Adjust the radius as needed
+        const imageUrls = [
+            'page1.html',
+            'page2.html',
+            'page3.html',
+            'page4.html',
+            'page5.html',
+            'page6.html',
+            'page7.html',
+            'page8.html',
+            'page9.html',
+            'page10.html',
+            'page11.html',
+            'page12.html'
+        ];
+
+        // Function to update arrow rotation
+        function updateArrowRotation(event) {
+            const mouseX = event.clientX;
+            const mouseY = event.clientY;
+
+            const centerX = window.innerWidth / 2;
+            const centerY = window.innerHeight / 2;
+
+            // Calculate the angle between the mouse and the center of the page
+            const angle = Math.atan2(mouseY - centerY, mouseX - centerX);
+
+            // Apply the rotation to the arrow image and rotate 90 degrees to the right
+            arrowImage.style.transform = `translateX(-50%) translateY(0) rotate(${angle + Math.PI / 2}rad)`;
+        }
+
+        // Add mousemove event listener
+        document.addEventListener('mousemove', updateArrowRotation);
+
+        // Initial rotation setup
+        updateArrowRotation({ clientX: window.innerWidth / 2, clientY: window.innerHeight / 2 });
+
+        for (let i = 0; i < numImages; i++) {
+            const image = document.createElement('a'); // Wrap the image with an anchor tag
+            image.href = imageUrls[i % imageUrls.length]; // Cycle through the array of image URLs
+            const img = document.createElement('img');
+            img.src = `${i + 1}.png`; // Replace with your image file names
+            const angle = i * angleIncrement;
+            const x = radius * Math.cos(angle);
+            const y = radius * Math.sin(angle);
+            img.style.left = x + 'px';
+            img.style.top = y + 'px';
+            image.appendChild(img); // Append the image to the anchor tag
+            circle.appendChild(image); // Append the anchor tag to the circle
+        }
+    </script>
+</body>
+</html>
